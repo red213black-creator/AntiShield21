@@ -7,7 +7,7 @@ public class AntiShieldClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         AntiShield.init();
-        Keybinds.init();
+        Keybinds.register();
     }
 
 }
