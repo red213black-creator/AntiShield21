@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+
+  "id": "antishield",
+
+  "version": "1.0",
+
+  "name": "AntiShield",
+
+  "description": "Shield breaker for Minecraft 1.21.4",
+
+  "environment": "client",
+
+  "entrypoints": {
+
+    "client": [
+
+      "com.antishield.AntiShieldClient"
+
+    ]
+
+  },
+
+
+  "depends": {
+
+    "fabricloader": ">=0.16.0",
+
+    "fabric-api": "*",
+
+    "minecraft": "1.21.4"
+
+  }
+
+}
