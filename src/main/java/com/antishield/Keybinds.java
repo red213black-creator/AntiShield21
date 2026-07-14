@@ -7,7 +7,6 @@ import org.lwjgl.glfw.GLFW;
 public class Keybinds {
 
     public static KeyBinding activate;
-    public static KeyBinding toggleFly;
 
     public static void register() {
 
@@ -18,3 +17,7 @@ public class Keybinds {
                         "category.antishield"
                 )
         );
+
+    }
+
+}
