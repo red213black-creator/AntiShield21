@@ -51,7 +51,7 @@ public class ElytraFly {
                 }
             }
 
-            if (flightMode && client.player.isFallFlying()) {
+            if (flightMode && client.player.isGliding()) {
 
                 if (fireworkCooldown > 0) {
                     fireworkCooldown--;
