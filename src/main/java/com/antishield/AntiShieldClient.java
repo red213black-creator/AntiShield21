@@ -8,6 +8,8 @@ public class AntiShieldClient implements ClientModInitializer {
     public void onInitializeClient() {
         AntiShield.init();
         ElytraFly.init();
+        TntCart.init();
+        AutoCharge.init();
         Keybinds.register();
     }
 
