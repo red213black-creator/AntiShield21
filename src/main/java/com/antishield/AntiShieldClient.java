@@ -7,6 +7,7 @@ public class AntiShieldClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         AntiShield.init();
+        ElytraFly.init()
         Keybinds.register();
     }
 
