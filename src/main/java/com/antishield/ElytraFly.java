@@ -22,7 +22,7 @@ public class ElytraFly {
 
     private static KeyBinding toggleFly;
     private static boolean flightMode = false;
-    private static int fireworkCooldown = 0;
+    private static boolean wasGliding = false;
 
     public static void init() {
 
@@ -51,14 +51,15 @@ public class ElytraFly {
                 }
             }
 
-            if (flightMode && client.player.isGliding()) {
+            if (flightMode) {
 
-                if (fireworkCooldown > 0) {
-                    fireworkCooldown--;
-                } else {
+                boolean gliding = client.player.isGliding();
+
+                if (gliding && !wasGliding) {
                     useFirework(client);
-                    fireworkCooldown = 10;
                 }
+
+                wasGliding = gliding;
             }
 
         });
