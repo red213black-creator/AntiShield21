@@ -5,7 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ElytraItem;
+import net.minecraft.item.Items;
 import net.minecraft.item.FireworkRocketItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
@@ -52,7 +52,7 @@ public class ElytraFly {
     }
 
     private static void equipElytra(MinecraftClient client) {
-        int slot = findSlot(client, stack -> stack.getItem() instanceof ElytraItem);
+    int slot = findSlot(client, stack -> stack.isOf(Items.ELYTRA));
         if (slot != -1)
             swapSlots(client, slot, 6);
     }
