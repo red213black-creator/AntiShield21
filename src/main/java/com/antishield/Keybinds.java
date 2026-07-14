@@ -18,15 +18,3 @@ public class Keybinds {
                         "category.antishield"
                 )
         );
-
-        toggleFly = KeyBindingHelper.registerKeyBinding(
-                new KeyBinding(
-                        "key.antishield.togglefly",
-                        GLFW.GLFW_KEY_V,
-                        "category.antishield"
-                )
-        );
-
-    }
-
-}
