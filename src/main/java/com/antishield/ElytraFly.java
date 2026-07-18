@@ -8,9 +8,9 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.EquippableComponent;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.Items;
 import net.minecraft.item.FireworkRocketItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Hand;
@@ -25,7 +25,6 @@ public class ElytraFly {
     private static boolean wasGliding = false;
 
     public static void init() {
-
         toggleFly = KeyBindingHelper.registerKeyBinding(
                 new KeyBinding(
                         "key.antishield.togglefly",
@@ -35,14 +34,10 @@ public class ElytraFly {
         );
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-
-            if (client.player == null)
-                return;
+            if (client.player == null) return;
 
             if (toggleFly.wasPressed()) {
-
                 flightMode = !flightMode;
-
                 if (flightMode) {
                     equipElytra(client);
                     startFlying(client);
@@ -52,23 +47,18 @@ public class ElytraFly {
             }
 
             if (flightMode) {
-
                 boolean gliding = client.player.isGliding();
-
                 if (gliding && !wasGliding) {
                     useFirework(client);
                 }
-
                 wasGliding = gliding;
             }
-
         });
     }
 
     private static void equipElytra(MinecraftClient client) {
         int slot = findSlot(client, stack -> stack.isOf(Items.ELYTRA));
-        if (slot != -1)
-            swapSlots(client, slot, 6);
+        if (slot != -1) swapSlots(client, slot, 6);
     }
 
     private static void equipChestplate(MinecraftClient client) {
@@ -76,8 +66,7 @@ public class ElytraFly {
             EquippableComponent eq = stack.get(DataComponentTypes.EQUIPPABLE);
             return eq != null && eq.slot() == EquipmentSlot.CHEST;
         });
-        if (slot != -1)
-            swapSlots(client, slot, 6);
+        if (slot != -1) swapSlots(client, slot, 6);
     }
 
     private static void startFlying(MinecraftClient client) {
@@ -88,9 +77,7 @@ public class ElytraFly {
 
     private static void useFirework(MinecraftClient client) {
         int slot = findSlot(client, stack -> stack.getItem() instanceof FireworkRocketItem);
-        if (slot == -1)
-            return;
-
+        if (slot == -1) return;
         swapSlots(client, slot, 45);
         client.interactionManager.interactItem(client.player, Hand.OFF_HAND);
         swapSlots(client, 45, slot);
@@ -98,23 +85,19 @@ public class ElytraFly {
 
     private static int findSlot(MinecraftClient client, Predicate<ItemStack> check) {
         PlayerInventory inv = client.player.getInventory();
-
         for (int i = 0; i < inv.main.size(); i++) {
             ItemStack stack = inv.main.get(i);
-
-            if (check.test(stack))
+            if (check.test(stack)) {
                 return i < 9 ? 36 + i : i;
+            }
         }
-
         return -1;
     }
 
     private static void swapSlots(MinecraftClient client, int slotA, int slotB) {
         int syncId = client.player.currentScreenHandler.syncId;
-
         client.interactionManager.clickSlot(syncId, slotA, 0, SlotActionType.PICKUP, client.player);
         client.interactionManager.clickSlot(syncId, slotB, 0, SlotActionType.PICKUP, client.player);
         client.interactionManager.clickSlot(syncId, slotA, 0, SlotActionType.PICKUP, client.player);
     }
-
 }
