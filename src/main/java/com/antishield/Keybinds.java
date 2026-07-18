@@ -11,6 +11,7 @@ public class Keybinds {
         toggleFly = KeyBindingHelper.registerKeyBinding(
                 new KeyBinding(
                         "key.antishield.togglefly",
+                        KeyBinding.Type.KEYSYM,
                         GLFW.GLFW_KEY_V,
                         "category.antishield"
                 )
