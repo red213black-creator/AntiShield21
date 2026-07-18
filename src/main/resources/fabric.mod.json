@@ -3,7 +3,7 @@
   "id": "antishield",
   "version": "1.0",
   "name": "AntiShield",
-  "description": "Elytra swap mod",
+  "description": "Elytra swap mod for 1.21.11",
   "environment": "client",
   "entrypoints": {
     "client": [
@@ -13,6 +13,6 @@
   "depends": {
     "fabricloader": ">=0.16.0",
     "fabric-api": "*",
-    "minecraft": "1.21.4"
+    "minecraft": "1.21.11"
   }
 }
