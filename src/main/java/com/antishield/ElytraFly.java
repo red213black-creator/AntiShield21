@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.EquippableComponent;
 import net.minecraft.entity.EquipmentSlot;
@@ -28,7 +29,7 @@ public class ElytraFly {
         toggleFly = KeyBindingHelper.registerKeyBinding(
                 new KeyBinding(
                         "key.antishield.togglefly",
-                        KeyBinding.Type.KEYSYM,
+                        InputUtil.Type.KEYSYM,
                         GLFW.GLFW_KEY_V,
                         "category.antishield"
                 )
